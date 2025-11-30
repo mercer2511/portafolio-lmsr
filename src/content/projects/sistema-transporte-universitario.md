@@ -50,7 +50,7 @@ La funcionalidad más potente del sistema son las tareas programadas (`time sche
 
 Todo esto se despliega en **Google Cloud Run**, permitiendo que los contenedores se activen solo bajo demanda, optimizando drásticamente los costos.
 
-<!-- Inserta aquí una captura de la configuración de Google Cloud Tasks o Cloud Run. -->
+![Configuración de Tareas Programadas en Google Cloud Tasks](./images/stu-gcp-tasks.png)
 
 ### 3. Pragmatismo en la App Móvil: Kotlin Nativo
 

@@ -1,8 +1,6 @@
 // src/components/react/Hero.tsx
 import { motion, type Variants } from 'framer-motion';
-import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
-// 1. Importa la imagen desde la carpeta `assets`.
-// `avatarSrc` es un objeto con información de la imagen optimizada.
+import { IconBrandGithub, IconBrandLinkedin, IconArrowDown } from '@tabler/icons-react';
 import avatarSrc from '../../assets/images/avatar.jpg';
 
 const containerVariants = {
@@ -40,6 +38,15 @@ const avatarVariants: Variants = {
 };
 
 export default function Hero() {
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+        e.preventDefault();
+        const targetId = e.currentTarget.href.split('#')[1];
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <motion.section
             id="hero-section"
@@ -68,18 +75,26 @@ export default function Hero() {
                         </h1>
 
                         <p className="text-lg md:text-xl text-[var(--color-text-muted)] mb-8 max-w-lg leading-relaxed">
-                            Desarrollador Full Stack especializado en crear experiencias digitales rápidas y accesibles. Transformo ideas complejas en código limpio.
+                            Estudiante de <strong>Ingeniería de Sistemas</strong> en la Universidad Nacional de Cañete. Me apasiona transformar ideas complejas en <strong>soluciones tecnológicas accesibles e innovadoras</strong> que resuelven problemas del mundo real.
                         </p>
 
-                        <div className="flex flex-wrap gap-4">
-                            <a href="https://github.com/mercer2511" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-bold hover:bg-slate-200 transition-colors">
-                                <IconBrandGithub className="size-5" />
-                                GitHub
+                        <div className="flex flex-wrap items-center gap-4">
+                            <a
+                                href="#projects-section"
+                                onClick={handleScroll}
+                                className="flex items-center gap-2 px-6 py-3 bg-[var(--color-accent)] text-white rounded-full font-bold hover:bg-[var(--color-accent)]/80 transition-colors"
+                            >
+                                <IconArrowDown className="size-5" />
+                                Ver mis Proyectos
                             </a>
-                            <a href="https://www.linkedin.com/in/leonardo-sanchez-is/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-[var(--color-bg-card)] rounded-full font-bold border border-slate-700 hover:bg-slate-700 transition-colors">
-                                <IconBrandLinkedin className="size-5" />
-                                LinkedIn
-                            </a>
+                            <div className="flex items-center gap-4">
+                                <a href="https://github.com/mercer2511" target="_blank" rel="noopener noreferrer" className="p-2 text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">
+                                    <IconBrandGithub className="size-7" />
+                                </a>
+                                <a href="https://www.linkedin.com/in/leonardo-sanchez-is/" target="_blank" rel="noopener noreferrer" className="p-2 text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">
+                                    <IconBrandLinkedin className="size-7" />
+                                </a>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -87,7 +102,6 @@ export default function Hero() {
                         <div className="relative w-64 h-64 md:w-80 md:h-80">
                             <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-accent)] to-purple-500 rounded-full blur-[80px] opacity-40"></div>
                             <div className="relative w-full h-full rounded-full border-2 border-white/10 bg-[var(--color-bg-card)]/80 backdrop-blur-sm overflow-hidden flex items-center justify-center">
-                                {/* CORRECCIÓN: Usamos `avatarSrc.src` para obtener la URL de la imagen. */}
                                 <img
                                     src={avatarSrc.src}
                                     alt="Foto de perfil de Leonardo"
