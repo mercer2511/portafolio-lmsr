@@ -1,11 +1,45 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/react/Hero.tsx';
+import ProjectCard from '../components/react/ProjectCard.tsx';
+import { getCollection } from 'astro:content';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects = await getCollection('projects');
+const sortedProjects = projects.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Portafolio de Leonardo">
+    <main class="min-h-screen">
+
+        <Hero client:load />
+
+        <section class="px-4 py-20 md:px-8 max-w-6xl mx-auto">
+            <div class="flex items-center justify-between mb-12">
+                <h2 class="text-3xl font-bold">Proyectos Destacados</h2>
+                <a href="https://github.com/mercer2511" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:underline text-sm font-medium transition-colors">
+                    Ver todo en GitHub &rarr;
+                </a>
+            </div>
+
+            {sortedProjects.length > 0 ? (
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {sortedProjects.map((project) => {
+                        const projectProps = {
+                            slug: project.slug,
+                            title: project.data.title,
+                            description: project.data.description,
+                            tags: project.data.tags,
+                            github: project.data.github?.toString(),
+                            link: project.data.link?.toString(),
+                        };
+                        return <ProjectCard project={projectProps} client:visible />;
+                    })}
+                </div>
+            ) : (
+                <p class="text-center text-[var(--color-text-muted)]">Cargando proyectos...</p>
+            )}
+        </section>
+
+    </main>
 </Layout>

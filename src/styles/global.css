@@ -1,0 +1,60 @@
+/* src/styles/global.css */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/*
+  Configuración del Tema Catppuccin para Tailwind CSS v4.
+  Se definen paletas de colores para modos claro (Latte) y oscuro (Mocha).
+*/
+@theme {
+    /* --- MODO CLARO (Catppuccin Latte) --- */
+    --color-accent: #1e66f5; /* Blue */
+    --color-bg-card: #e6e9ef; /* Mantle */
+    --color-bg-main: #eff1f5; /* Base */
+    --color-text-body: #4c4f69; /* Text */
+    --color-text-muted: #9ca0b0; /* Subtext0 */
+}
+
+/* --- MODO OSCURO (Catppuccin Mocha) --- */
+.dark {
+    --color-accent: #89b4fa; /* Blue */
+    --color-bg-card: #181825; /* Mantle */
+    --color-bg-main: #1e1e2e; /* Base */
+    --color-text-body: #cdd6f4; /* Text */
+    --color-text-muted: #a6adc8; /* Subtext0 */
+}
+
+/* Estilos base del body */
+body {
+    background-color: var(--color-bg-main);
+    color: var(--color-text-body);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Configuración para @tailwindcss/typography */
+.prose {
+    --tw-prose-body: var(--color-text-body);
+    --tw-prose-headings: var(--color-text-body);
+    --tw-prose-lead: var(--color-text-muted);
+    --tw-prose-links: var(--color-accent);
+    --tw-prose-bold: var(--color-text-body);
+    --tw-prose-counters: var(--color-text-muted);
+    --tw-prose-bullets: var(--color-text-muted);
+    --tw-prose-hr: #dce0e8; /* Latte Crust */
+    --tw-prose-quotes: var(--color-text-body);
+    --tw-prose-quote-borders: var(--color-accent);
+    --tw-prose-captions: var(--color-text-muted);
+    --tw-prose-code: var(--color-text-body);
+    --tw-prose-pre-code: #cdd6f4; /* Mocha Text */
+    --tw-prose-pre-bg: #1e1e2e; /* Mocha Base */
+    --tw-prose-th-borders: #dce0e8; /* Latte Crust */
+    --tw-prose-td-borders: #dce0e8; /* Latte Crust */
+}
+
+.dark .prose {
+    --tw-prose-hr: #313244; /* Mocha Crust */
+    --tw-prose-pre-code: #cdd6f4;
+    --tw-prose-pre-bg: #1e1e2e;
+    --tw-prose-th-borders: #313244; /* Mocha Crust */
+    --tw-prose-td-borders: #313244; /* Mocha Crust */
+}
