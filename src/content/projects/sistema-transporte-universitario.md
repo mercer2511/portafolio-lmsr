@@ -56,7 +56,8 @@ Todo esto se despliega en **Google Cloud Run**, permitiendo que los contenedores
 
 La app móvil está destinada a dispositivos de bajo costo que se comprarían específicamente para los conductores. Elegí **Kotlin Nativo** porque el desarrollo para Android representaba un menor costo de hardware y me daba control total sobre el rendimiento.
 
-<!-- Inserta aquí una o dos capturas de pantalla de la interfaz de la app móvil. -->
+![Vista de la lista de pasajeros en la app móvil](./images/stu-mobile-list.jpg)
+![Detalle de la ruta en la app móvil](./images/stu-mobile-details.jpg)
 
 ## Desafíos Técnicos y Aprendizajes
 
@@ -64,7 +65,7 @@ La app móvil está destinada a dispositivos de bajo costo que se comprarían es
 
 *   **BI con Presupuesto Cero:** El requisito inicial era Power BI, pero su costo era una barrera. Propuse **Apache Superset** como una alternativa open-source y auto-alojada, cumpliendo con el requisito sin impactar el presupuesto.
 
-<!-- Inserta aquí una captura del dashboard de Apache Superset. -->
+![Dashboard de Business Intelligence en Apache Superset](./images/stu-dashboard-bi.png)
 
 *   **Priorización y "Trade-Offs":** Para cumplir con la fecha de entrega del dashboard de BI, tomé la decisión consciente de sacrificar la estética de la interfaz de la app móvil, enfocándome primero en la funcionalidad crítica.
 
